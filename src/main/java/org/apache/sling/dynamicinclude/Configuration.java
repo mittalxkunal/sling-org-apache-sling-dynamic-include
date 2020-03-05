@@ -99,13 +99,13 @@ public class Configuration {
       boolean include$_$filter_config_disableIgnoreUrlParams() default false;
 
       @AttributeDefinition(name = "Rewrite path for XF", description = "Check to enable path rewriting for XF")
-      boolean include$_$filter_config_xf_re_write() default false;
+      boolean include$_$filter_config_xfRewrite() default false;
 
       @AttributeDefinition(name = "XF Path Property name in XF component", description = "Filter will replace XF path with selected resource types from this property")
-      String include$_$filter_config_xf_path_property() default "fragmentVariationPath";
+      String include$_$filter_config_xfPathProperty() default "fragmentVariationPath";
 
       @AttributeDefinition(name = "XF Filter selector", description = "Selector used to include XF without HTML wrapper")
-      String include$_$filter_config_selector_xf() default "content";
+      String include$_$filter_config_xfSelector() default "content";
   }
 
   private static final Logger LOG = LoggerFactory.getLogger(Configuration.class);
@@ -136,11 +136,11 @@ public class Configuration {
 
   private boolean appendSuffix;
 
-  private boolean isXFRewriteEnabled;
+  private boolean isXfRewriteEnabled;
 
   private String xfPathProperty;
 
-  private String includeSelectorXF;
+  private String xfSelector;
 
   @Activate
   public void activate(Config cfg) {
@@ -167,9 +167,9 @@ public class Configuration {
     rewritePath = cfg.include$_$filter_config_rewrite();
     appendSuffix = cfg.include$_$filter_config_appendSuffix();
     disableIgnoreUrlParams = cfg.include$_$filter_config_disableIgnoreUrlParams();
-    isXFRewriteEnabled = cfg.include$_$filter_config_xf_re_write();
-    xfPathProperty = cfg.include$_$filter_config_xf_path_property();
-    includeSelectorXF = cfg.include$_$filter_config_selector_xf();
+    isXfRewriteEnabled = cfg.include$_$filter_config_xfRewrite();
+    xfPathProperty = cfg.include$_$filter_config_xfPathProperty();
+    xfSelector = cfg.include$_$filter_config_xfSelector();
   }
 
   private PathMatcher choosePathMatcher(String pathPattern) {
@@ -253,10 +253,10 @@ public class Configuration {
       return appendSuffix;
   }
 
-  public boolean isXFRewriteEnabled() { return isXFRewriteEnabled; }
+  public boolean isXfRewriteEnabled() { return isXfRewriteEnabled; }
 
   public String getXfPathProperty() { return xfPathProperty; }
 
-  public String getIncludeSelectorXF() { return includeSelectorXF; }
+  public String getXfSelector() { return xfSelector; }
 
 }

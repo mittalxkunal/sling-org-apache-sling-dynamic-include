@@ -171,18 +171,18 @@ public class IncludeTagFilter implements Filter {
         // so that the path to the component is replaced with path to the XF
         ValueMap vm = resource.adaptTo(ValueMap.class);
         String xfPath = "";
-        Boolean replaceToXFPath = false;
-        if (config.isXFRewriteEnabled() &&
+        Boolean replaceToXfPath = false;
+        if (config.isXfRewriteEnabled() &&
                 null != vm &&
                 vm.containsKey(config.getXfPathProperty())) {
             xfPath = vm.get(config.getXfPathProperty(), String.class);
         }
         if (xfPath.length() > 0) {
-            replaceToXFPath = true;
+            replaceToXfPath = true;
         }
 
         final boolean synthetic = ResourceUtil.isSyntheticResource(request.getResource());
-        return UrlBuilder.buildUrl(config.getIncludeSelector(), resource.getResourceType(), synthetic, config, request.getRequestPathInfo(), xfPath, replaceToXFPath);
+        return UrlBuilder.buildUrl(config.getIncludeSelector(), resource.getResourceType(), synthetic, config, request.getRequestPathInfo(), xfPath, replaceToXfPath);
     }
 
     private static String sanitize(String path) {
