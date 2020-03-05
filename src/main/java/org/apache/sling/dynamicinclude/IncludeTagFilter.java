@@ -176,9 +176,9 @@ public class IncludeTagFilter implements Filter {
                 null != vm &&
                 vm.containsKey(config.getXfPathProperty())) {
             xfPath = vm.get(config.getXfPathProperty(), String.class);
-        }
-        if (xfPath.length() > 0) {
-            replaceToXfPath = true;
+            if (xfPath.length() > 0) {
+                replaceToXfPath = true;
+            }
         }
 
         final boolean synthetic = ResourceUtil.isSyntheticResource(request.getResource());

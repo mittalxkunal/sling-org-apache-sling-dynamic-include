@@ -184,6 +184,32 @@ public class UrlBuilderTest {
         assertThat(actualResult, is("/resource/path.foo.include.html/apps/example/resource/type.sdi"));
     }
 
+    @Test
+    public void shouldAppendTheXfSelectorToUrlForXFRewriteEnabled() {
+        givenAnHtmlRequestForResource("/resource/path");
+        withSelectorString(null);
+        boolean isSyntheticResource = false;
+
+        when(config.getXfSelector()).thenReturn("content");
+
+        String actualResult = UrlBuilder.buildUrl("include", "apps/example/resource/type", isSyntheticResource, config, requestPathInfo, "/xf/path", true);
+
+        assertThat(actualResult, is("/xf/path.content.include.html"));
+    }
+
+    @Test
+    public void shouldNotAppendTheXfSelectorIfEmptyToUrlForXFRewriteEnabled() {
+        givenAnHtmlRequestForResource("/resource/path");
+        withSelectorString(null);
+        boolean isSyntheticResource = false;
+
+        when(config.getXfSelector()).thenReturn("");
+
+        String actualResult = UrlBuilder.buildUrl("include", "apps/example/resource/type", isSyntheticResource, config, requestPathInfo, "/xf/path", true);
+
+        assertThat(actualResult, is("/xf/path.include.html"));
+    }
+
     private void givenAnHtmlRequestForResource(String resourcePath) {
         when(requestPathInfo.getExtension()).thenReturn("html");
         when(requestPathInfo.getResourcePath()).thenReturn(resourcePath);
