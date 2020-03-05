@@ -64,6 +64,9 @@ public class ConfigurationTest {
     assertThat(tested.isEnabled(), is(false));
     assertThat(tested.hasTtlSet(), is(false));
     assertThat(tested.isRewritePath(), is(false));
+    assertThat(tested.isXFRewriteEnabled(), is(false));
+    assertThat(tested.getXfPathProperty(), is("fragmentVariationPath"));
+    assertThat(tested.getIncludeSelectorXF(), is("content"));
   }
 
   @Test
@@ -79,6 +82,9 @@ public class ConfigurationTest {
     properties.put("include-filter.config.selector", "cache");
     properties.put("include-filter.config.rewrite", true);
     properties.put("include-filter.config.ignoreUrlParams", new String[] {"query"});
+    properties.put("include-filter.config.xf.re.write", true);
+    properties.put("include-filter.config.xf.path.property", "xfPath");
+    properties.put("include-filter.config.selector.xf", "newSelector");
 
     context.registerInjectActivateService(tested, properties);
 
@@ -93,5 +99,8 @@ public class ConfigurationTest {
     assertThat(tested.hasTtlSet(), is(true));
     assertThat(tested.isRewritePath(), is(true));
     assertThat(tested.isSupportedResourceType("test/resource/type"), is(true));
+    assertThat(tested.isXFRewriteEnabled(), is(true));
+    assertThat(tested.getXfPathProperty(), is("xfPath"));
+    assertThat(tested.getIncludeSelectorXF(), is("newSelector"));
   }
 }
