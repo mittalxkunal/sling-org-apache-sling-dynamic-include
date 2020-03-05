@@ -136,7 +136,7 @@ public class Configuration {
 
   private boolean appendSuffix;
 
-  private boolean isXfRewriteEnabled;
+  private boolean xfRewriteEnabled;
 
   private String xfPathProperty;
 
@@ -167,7 +167,7 @@ public class Configuration {
     rewritePath = cfg.include$_$filter_config_rewrite();
     appendSuffix = cfg.include$_$filter_config_appendSuffix();
     disableIgnoreUrlParams = cfg.include$_$filter_config_disableIgnoreUrlParams();
-    isXfRewriteEnabled = cfg.include$_$filter_config_xfRewrite();
+    xfRewriteEnabled = cfg.include$_$filter_config_xfRewrite();
     xfPathProperty = cfg.include$_$filter_config_xfPathProperty();
     xfSelector = cfg.include$_$filter_config_xfSelector();
   }
@@ -253,7 +253,7 @@ public class Configuration {
       return appendSuffix;
   }
 
-  public boolean isXfRewriteEnabled() { return isXfRewriteEnabled; }
+  public boolean isXfRewriteEnabled() { return xfRewriteEnabled; }
 
   public String getXfPathProperty() { return xfPathProperty; }
 
