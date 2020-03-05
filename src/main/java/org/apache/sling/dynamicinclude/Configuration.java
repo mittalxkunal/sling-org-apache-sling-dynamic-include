@@ -101,10 +101,10 @@ public class Configuration {
       @AttributeDefinition(name = "Rewrite path for XF", description = "Check to enable path rewriting for XF")
       boolean include$_$filter_config_xf_re_write() default false;
 
-      @AttributeDefinition(name = "Property name in XF component", description = "Filter will replace XF path with selected resource types from this property")
+      @AttributeDefinition(name = "XF Path Property name in XF component", description = "Filter will replace XF path with selected resource types from this property")
       String include$_$filter_config_xf_path_property() default "fragmentVariationPath";
 
-      @AttributeDefinition(name = "Filter selector", description = "Selector used to include XF without HTML wrapper")
+      @AttributeDefinition(name = "XF Filter selector", description = "Selector used to include XF without HTML wrapper")
       String include$_$filter_config_selector_xf() default "content";
   }
 
